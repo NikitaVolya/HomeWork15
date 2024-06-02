@@ -18,8 +18,12 @@ public:
 	BitString operator!() const;
 
 	BitString operator+(const BitString& other);
+	BitString& operator+=(const BitString& other) { *this = *this + other; };
 
 	void clear();
+
+	bool operator==(const BitString& other) const { return compare(other); }
+	bool operator!=(const BitString& other) const { return !compare(other); }
 
 	std::ostream& print(std::ostream& out) const;
 	friend std::ostream& operator<<(std::ostream& out, const BitString& bit_str) { return bit_str.print(out); };
